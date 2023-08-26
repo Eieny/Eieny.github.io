@@ -1,0 +1,12 @@
+@mixin respond() {
+    max-width: 340px;
+    max-height: 340px;
+    @media (max-width: 600px) {
+        max-width: 250px;
+        max-height: 250px;
+    }
+    @media (max-width: 320px) {
+        max-width: 205px;
+        max-height: 205px;
+    }
+}

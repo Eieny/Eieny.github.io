@@ -1,0 +1,627 @@
+@charset "UTF-8";
+@keyframes rise {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+}
+@keyframes rise-1 {
+  0% {
+    display: block;
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+  99% {
+    display: block;
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+@keyframes slide {
+  from {
+    opacity: 0;
+    height: 0px;
+  }
+  to {
+    height: auto;
+    opacity: 1;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 44px;
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  line-height: 36px;
+  text-align: center;
+}
+
+input,
+textarea {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  border: 1px solid rgba(31, 64, 111, 0.2);
+  border-radius: 4px;
+  padding: 6px 27px 10px 12px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0059d9;
+}
+
+textarea::-moz-placeholder {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+input,
+textarea::placeholder {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  background-color: #0059d9;
+  color: #ffffff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  transition: all 0.2s;
+}
+button:hover {
+  background-color: #000000;
+}
+button:active {
+  background-color: #0059d9;
+  opacity: 0.7;
+}
+
+.profile {
+  width: auto;
+  padding-left: 150px;
+  padding-right: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #eff1f2;
+}
+@media (max-width: 600px) {
+  .profile {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .profile {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.profile > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+}
+.profile .avatar {
+  max-width: 340px;
+  max-height: 340px;
+  border-radius: 50%;
+}
+@media (max-width: 600px) {
+  .profile .avatar {
+    max-width: 250px;
+    max-height: 250px;
+  }
+}
+@media (max-width: 320px) {
+  .profile .avatar {
+    max-width: 205px;
+    max-height: 205px;
+  }
+}
+.profile h1 {
+  margin-top: 36px;
+  margin-bottom: 8px;
+}
+.profile p {
+  font-family: "PT Mono", monospace;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  opacity: 0.7;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.profile button {
+  width: 280px;
+}
+@media (max-width: 320px) {
+  .profile button {
+    width: 100%;
+  }
+}
+
+.expectations {
+  width: auto;
+  padding-left: 150px;
+  padding-right: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+@media (max-width: 600px) {
+  .expectations {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .expectations {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.expectations > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+}
+.expectations label {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.expectations label h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0px;
+}
+.expectations label::after {
+  content: url(./assets/add.svg);
+  margin-left: auto;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+.expectations input {
+  display: none;
+}
+.expectations input:checked ~ p {
+  animation: rise 0.3s;
+}
+.expectations input:checked ~ label::after {
+  transform: rotate(45deg);
+}
+.expectations input:not(:checked) ~ p {
+  display: none;
+  animation: rise-1 0.3s;
+}
+.expectations input:not(:checked) ~ label {
+  color: #0059d9;
+}
+.expectations input:not(:checked) ~ label:hover {
+  color: #000000;
+}
+.expectations h2 {
+  text-align: left;
+  margin-top: 0px;
+  margin-bottom: 16px;
+}
+.expectations p {
+  font-family: "PT Mono", monospace;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  opacity: 0.7;
+  margin-top: -2px;
+  margin-bottom: 20px;
+}
+.expectations > div {
+  align-items: start;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 115px;
+}
+.expectations ul {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+.expectations li {
+  border-top: solid 1px #d2d9e2;
+}
+.expectations li::marker {
+  content: none;
+}
+
+.projects {
+  width: auto;
+  padding-left: 150px;
+  padding-right: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #25282a;
+}
+@media (max-width: 600px) {
+  .projects {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .projects {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.projects > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+}
+.projects #school_1:checked ~ div div {
+  transform: translateX(0%);
+  transition: all 1s;
+}
+.projects #school_1:checked ~ div label[for=school_1]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #school_1:checked ~ div label[for=school_1]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects #school_2:checked ~ div div {
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+.projects #school_2:checked ~ div label[for=school_2]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #school_2:checked ~ div label[for=school_2]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects #school_3:checked ~ div div {
+  transform: translateX(-200%);
+  transition: all 1s;
+}
+.projects #school_3:checked ~ div label[for=school_3]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #school_3:checked ~ div label[for=school_3]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects #school_4:checked ~ div div {
+  transform: translateX(-300%);
+  transition: all 1s;
+}
+.projects #school_4:checked ~ div label[for=school_4]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #school_4:checked ~ div label[for=school_4]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects #kaizen_1:checked ~ div div {
+  transform: translateX(0%);
+  transition: all 1s;
+}
+.projects #kaizen_1:checked ~ div label[for=kaizen_1]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #kaizen_1:checked ~ div label[for=kaizen_1]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects #kaizen_2:checked ~ div div {
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+.projects #kaizen_2:checked ~ div label[for=kaizen_2]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #kaizen_2:checked ~ div label[for=kaizen_2]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects #technoline_1:checked ~ div div {
+  transform: translateX(0%);
+  transition: all 1s;
+}
+.projects #technoline_1:checked ~ div label[for=technoline_1]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #technoline_1:checked ~ div label[for=technoline_1]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects #technoline_2:checked ~ div div {
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+.projects #technoline_2:checked ~ div label[for=technoline_2]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #technoline_2:checked ~ div label[for=technoline_2]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects #technoline_3:checked ~ div div {
+  transform: translateX(-200%);
+  transition: all 1s;
+}
+.projects #technoline_3:checked ~ div label[for=technoline_3]::after {
+  background-color: transparent;
+  border: solid #71abff 1px;
+}
+.projects #technoline_3:checked ~ div label[for=technoline_3]:hover::after {
+  border: solid #ffffff 1px;
+}
+.projects input {
+  display: none;
+}
+.projects label {
+  cursor: pointer;
+}
+.projects label::after {
+  content: "";
+  display: inline-block;
+  background-color: #71abff;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+.projects label:hover::after {
+  background-color: #ffffff;
+}
+.projects a {
+  font-family: "PT Mono", monospace;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  opacity: 0.7;
+  color: #71abff;
+  text-decoration: none;
+  opacity: 1;
+}
+.projects > div {
+  overflow: hidden;
+}
+.projects div div {
+  display: flex;
+}
+.projects img {
+  width: 100%;
+  border-radius: 8px;
+}
+.projects h2 {
+  color: #ffffff;
+}
+.projects h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.projects p {
+  font-family: "PT Mono", monospace;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  opacity: 0.7;
+  color: #ffffff;
+  text-align: center;
+}
+.projects ul {
+  padding: 0px;
+}
+.projects li div p {
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  text-align: left;
+  opacity: 1;
+}
+.projects li::marker {
+  content: none;
+}
+
+.feedback {
+  width: auto;
+  padding-left: 150px;
+  padding-right: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eff1f2;
+}
+@media (max-width: 600px) {
+  .feedback {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .feedback {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.feedback > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+}
+.feedback p {
+  font-family: "PT Mono", monospace;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  opacity: 0.7;
+  text-align: center;
+  opacity: 1;
+}
+.feedback .links {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.feedback form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+@media (max-width: 600px) {
+  .feedback form {
+    gap: 16px;
+  }
+}
+.feedback form > div {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+@media (max-width: 600px) {
+  .feedback form > div {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+.feedback form > div > input {
+  width: 100%;
+}
+.feedback form input[type=file] {
+  display: none;
+}
+.feedback form #file-input:invalid ~ label[for=file-input]::after {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  content: "Прикрепить ТЗ";
+}
+.feedback form #file-input:valid ~ label[for=file-input]::after {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  content: "Загрузить другой файл";
+}
+.feedback form label[for=file-input] {
+  height: 36px;
+  cursor: pointer;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+  color: #0059d9;
+  border: 1px solid rgba(31, 64, 111, 0.2);
+  border-radius: 4px;
+  padding-top: 6px;
+  padding-bottom: 10px;
+  transition: all 0.2s;
+}
+.feedback form label[for=file-input]:hover {
+  color: #000000;
+}
+.feedback form label[for=file-input]:active {
+  color: #0059d9;
+  opacity: 0.7;
+}
+.feedback form textarea {
+  height: 136px;
+  resize: none;
+}
+.feedback a div {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.feedback a img {
+  max-width: 25px;
+  max-height: 25px;
+  z-index: 1;
+}
+.feedback a:hover::before {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.feedback a:active {
+  opacity: 0.7;
+}
+.feedback #telegram-icon > div {
+  background-color: #2ca5e0;
+  box-sizing: border-box;
+  padding-right: 3px;
+}
+.feedback #twitter-icon > div {
+  background-color: #51adef;
+}
+.feedback #vk-icon > div {
+  background-color: #0077ff;
+}/*# sourceMappingURL=style.css.map */

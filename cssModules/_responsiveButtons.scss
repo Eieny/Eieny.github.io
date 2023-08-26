@@ -1,0 +1,6 @@
+@mixin respond() {
+    width: 280px;
+    @media (max-width: 320px) {
+        width: 100%;
+    }
+}

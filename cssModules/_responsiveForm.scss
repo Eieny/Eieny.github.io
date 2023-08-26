@@ -1,0 +1,21 @@
+@mixin input-respond() {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+@mixin form-respond() {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+
+    @media (max-width: 600px) {
+        gap: 16px;
+    }
+}

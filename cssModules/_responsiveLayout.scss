@@ -1,0 +1,26 @@
+@mixin respond-to($size) {
+    @if ($size == 'large') {
+        @content;
+        padding: {
+            left: 150px;
+            right: 150px;
+        }
+    } @else if ($size == 'medium') {
+        @media (max-width: 600px) {
+            @content;
+            padding: {
+                left: 40px;
+                right: 40px;
+            }
+        }
+    } @else if ($size == 'small') {
+        @media (max-width: 320px) {
+            @content;
+            width: 100%;
+            padding: {
+                left: 20px;
+                right: 20px;
+            }
+        }
+    }
+}
