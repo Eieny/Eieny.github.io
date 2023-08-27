@@ -29,9 +29,9 @@ jobs:
       run:
         gulp
 
-    # - name: Deploy
-    #     uses: JamesIves/github-pages-deploy-action@v4
-    #     with:
-    #       folder: public
-    #       branch: gh-pages
-    #       single-commit: true
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: public
+        branch: gh-pages
+        single-commit: true
