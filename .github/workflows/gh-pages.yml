@@ -24,7 +24,7 @@ jobs:
 
     - name: Build
       run:
-        npm ci
+        npm install
     - name: Compile Gulp
       run:
         gulp
