@@ -19,9 +19,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: go
+      run: cd Eieny/Eieny.github.io
     - name: Build
       run:
-        cd Eieny.github.io
         npm install
     - name: Compile Gulp
       run:
