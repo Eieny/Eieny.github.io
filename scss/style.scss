@@ -1,8 +1,8 @@
-@use './cssModules/responsiveLayout';
-@use './cssModules/responsiveHeader';
-@use './cssModules/responsiveForm';
-@use './cssModules/responsiveAvatar';
-@use './cssModules/responsiveButtons';
+@use './modules/responsiveLayout';
+@use './modules/responsiveHeader';
+@use './modules/responsiveForm';
+@use './modules/responsiveAvatar';
+@use './modules/responsiveButtons';
 
 $header-font-family: 'Montserrat', sans-serif;
 $user-input-text-font-family: 'PT Sans', sans-serif;
@@ -275,7 +275,7 @@ button {
         }
 
         &::after {
-            content: url(./assets/add.svg);
+            content: url(../assets/add.svg);
             margin-left: auto;
             transform: rotate(0deg);
             transition: transform 0.3s ease-in-out;
