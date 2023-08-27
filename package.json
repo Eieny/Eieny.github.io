@@ -25,6 +25,6 @@
     "gulp": "^4.0.2",
     "gulp-sourcemaps": "^3.0.0",
     "sass": "^1.66.1",
-    "glob-parent": "6.0.2"
+    "glob-parent": "5.1.2"
   }
 }
