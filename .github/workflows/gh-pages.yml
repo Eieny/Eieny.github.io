@@ -8,6 +8,10 @@ on:
 
 jobs:
   deploy:
+    environment:
+       name: github-pages
+       url: ${{ steps.deployment.outputs.page_url }}
+    
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,14 +21,11 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        path: '.'
-        node-version: ${{ matrix.node-version }}
+          node-version-file: 'package.json'
 
-    # - name: go
-    #   run: cd ../
     - name: Build
       run:
-        npm install
+        npm ci
     - name: Compile Gulp
       run:
         gulp
