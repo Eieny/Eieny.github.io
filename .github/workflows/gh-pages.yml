@@ -20,8 +20,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Build
-      working-directory: ../../Eieny/Eieny.github.io.git
       run:
+        cd Eieny.github.io
         npm install
     - name: Compile Gulp
       run:
