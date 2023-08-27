@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import gulpSass from 'gulp-sass';
 import map from 'gulp-sourcemaps';
-import dartSass from 'sass';
+import * as dartSass from 'sass';
 import config from './config.js';
 
 const sass = gulpSass(dartSass);
@@ -14,4 +14,5 @@ const compileSassToCss = () => {
         .pipe(gulp.dest(config.path.dist.style));
 };
 
-export { compileSassToCss as compile };
+export default compileSassToCss;
+
