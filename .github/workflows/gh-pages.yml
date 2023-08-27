@@ -1,0 +1,29 @@
+name: Deploy to gh pages
+
+on:
+  push:
+    branches: [ "gh-pages" ]
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: |
+        npm ci
+        gulp compile
+
+    # - name: Deploy
+    #     uses: JamesIves/github-pages-deploy-action@v4
+    #     with:
+    #       folder: public
+    #       branch: gh-pages
+    #       single-commit: true
