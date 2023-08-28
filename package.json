@@ -1,0 +1,32 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eieny/Eieny.github.io.git"
+  },
+  "author": "Vladislava Golubeva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eieny/Eieny.github.io/issues"
+  },
+  "homepage": "https://github.com/Eieny/Eieny.github.io#readme",
+  "dependencies": {
+    "gulp-replace": "^1.1.4",
+    "gulp-sass": "^5.1.0"
+  },
+  "devDependencies": {
+    "glob-parent": "5.1.2",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "sass": "^1.66.1"
+  }
+}
