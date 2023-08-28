@@ -4,7 +4,12 @@ export default {
             "style": "src/scss/*.scss",
             "public": "public/*.*",
             "assets": "src/assets/*.*",
-            "remove": [".", "!*.html", "!/css", "!/assets"]
+            "remove": ["public", "src"],
+            "deploy": {
+                "htmlSrc": "assets/",
+                "htmlHref": "css/",
+                "css": "./assets/",
+            },
         },
         "dest": {
             "style": "./css",
