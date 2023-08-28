@@ -4,7 +4,7 @@ export default {
             "style": "src/scss/*.scss",
             "public": "public/*.*",
             "assets": "src/assets/*.*",
-            "remove": ["public", "src"],
+            "remove": ["public", "src", "README.md"],
             "deploy": {
                 "htmlSrc": "assets/",
                 "htmlHref": "css/",
