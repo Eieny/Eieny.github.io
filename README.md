@@ -1,5 +1,7 @@
 # Eieny.github.io
 
+Проект для эксперементов над вёрсткой/препроцессором/таск ранером.
+
 ### Deployed structure
 ```
 |-- index.html
