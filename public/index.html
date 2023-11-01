@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <meta name="description" content="Портфолио" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="../src/css/style.css" rel="stylesheet" />
+        <link href="../src/scss/style.css" rel="stylesheet" />
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=PT+Mono&family=PT+Sans&display=swap"
             rel="stylesheet"
@@ -22,7 +22,7 @@
                 />
                 <h1>Vladislava Golubeva</h1>
                 <p>Frontend developer based in Krasnoyarsk, Russia.</p>
-                <button>Связаться</button>
+                <button onclick="location.href='mailto:work.golubeva.vl@gmail.com';">Связаться</button>
             </div>
         </section>
 
@@ -84,8 +84,10 @@
                 <p>Собраны избранные реально работающие проекты</p>
                 <ul>
                     <li>
-                        <h3>Технолиния. Школа</h3>
-                        <a href="/">technoline.school.ru</a>
+                        <div class='project-header'>
+                            <h3>Технолиния. Школа</h3>
+                            <a href="/">technoline.school.ru</a>
+                        </div>
                         <input
                             name="school"
                             id="school_1"
@@ -95,7 +97,7 @@
                         <input name="school" id="school_2" type="radio" />
                         <input name="school" id="school_3" type="radio" />
                         <input name="school" id="school_4" type="radio" />
-                        <div>
+                        <div id='school-image-container'>
                             <div>
                                 <img src="../src/assets/School_1.png" />
                                 <img src="../src/assets/School_2.png" />
@@ -103,7 +105,7 @@
                                 <img src="../src/assets/School_4.png" />
                             </div>
                         </div>
-                        <div>
+                        <div class='description-container'>
                             <p>
                                 Программа для составления расписания занятий,
                                 позволяющая автоматизировать процесс составления
@@ -113,15 +115,19 @@
                                 методического, санитарно-гигиенического и
                                 индивидуально-психологического характера.
                             </p>
-                            <label for="school_1"> </label>
-                            <label for="school_2"> </label>
-                            <label for="school_3"> </label>
-                            <label for="school_4"> </label>
+                            <div>
+                                <label for="school_1"> </label>
+                                <label for="school_2"> </label>
+                                <label for="school_3"> </label>
+                                <label for="school_4"> </label>
+                            </div>
                         </div>
                     </li>
                     <li>
-                        <h3>Кайдзен</h3>
-                        <a href="/">kaizen.ru</a>
+                        <div class='project-header'>
+                            <h3>Кайдзен</h3>
+                            <a href="/">kaizen.ru</a>
+                        </div>
                         <input
                             name="kaizen"
                             id="kaizen_1"
@@ -129,24 +135,28 @@
                             checked
                         />
                         <input name="kaizen" id="kaizen_2" type="radio" />
-                        <div>
+                        <div id='kaizen-image-container'>
                             <div>
                                 <img src="../src/assets/Kaizen_1.png" />
                                 <img src="../src/assets/Kaizen_2.png" />
                             </div>
                         </div>
-                        <div>
+                        <div class='description-container'>
                             <p>
                                 Система для подачи и согласования предложений по
                                 усовершенствованию деятельности предприятия.
                             </p>
-                            <label for="kaizen_1"> </label>
-                            <label for="kaizen_2"> </label>
+                            <div>
+                                <label for="kaizen_1"> </label>
+                                <label for="kaizen_2"> </label>
+                            </div>
                         </div>
                     </li>
                     <li>
-                        <h3>Технолиния</h3>
-                        <a href="/">technoline.ru</a>
+                        <div class='project-header'>
+                            <h3>Технолиния</h3>
+                            <a href="/">technoline.ru</a>
+                        </div>
                         <input
                             name="technoline"
                             id="technoline_1"
@@ -163,27 +173,29 @@
                             id="technoline_3"
                             type="radio"
                         />
-                        <div>
+                        <div id='technoline-image-container'>
                             <div>
                                 <img src="../src/assets/Technoline_1.png" />
                                 <img src="../src/assets/Technoline_2.png" />
                                 <img src="../src/assets/Technoline_3.png" />
                             </div>
                         </div>
-                        <div>
+                        <div class='description-container'>
                             <p>
                                 MES-система управления производством, чтобы
                                 подразделение выполнило объем работ к сроку, с
                                 учетом соблюдения дедлайнов по выпуску каждого
                                 заказа. Основные функции, которые выполняет
-                                данная системв: контроль и распределение
+                                данная система: контроль и распределение
                                 ресурсов, диспетчеризация производства,
                                 управление персоналом, отслеживание этопов
                                 выполнения продукции и т.д.
                             </p>
-                            <label for="technoline_1"> </label>
-                            <label for="technoline_2"> </label>
-                            <label for="technoline_3"> </label>
+                            <div>
+                                <label for="technoline_1"> </label>
+                                <label for="technoline_2"> </label>
+                                <label for="technoline_3"> </label>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -194,13 +206,13 @@
             <div>
                 <h2>Контактная информация</h2>
                 <div class="links">
-                    <a id="vk-icon" href="/">
+                    <a id="vk-icon" href="https://vk.com/vladagolubeva">
                         <div><img src="../src/assets/vk.svg" /></div>
                     </a>
                     <a id="twitter-icon" href="/">
                         <div><img src="../src/assets/tt.svg" /></div>
                     </a>
-                    <a id="telegram-icon" href="">
+                    <a id="telegram-icon" href="https://t.me/Eieny_BA">
                         <div><img src="../src/assets/tg.svg" /></div>
                     </a>
                 </div>
@@ -211,7 +223,7 @@
                 </p>
                 <form>
                     <div>
-                        <input placeholder="Как вас зовут?" />
+                        <input placeholder="Как вас зовут?" required />
                         <input
                             placeholder="Почтовый ящик"
                             type="email"

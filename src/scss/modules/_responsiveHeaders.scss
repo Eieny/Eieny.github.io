@@ -1,0 +1,27 @@
+@mixin main-header-respond() {
+    @content;
+    font: {
+        size: 40px;
+    }
+    line-height: 44px;
+
+    @media (max-width: 600px) {
+        @content;
+        font: {
+            size: 32px;
+        }
+        line-height: 36px;
+    }
+}
+
+@mixin project-header-respond() {
+    margin: 100px 0 8px 0;
+    
+    @media (max-width: 600px) {
+      margin: 52px 0 8px 0;
+    }
+    
+    @media (max-width: 320px) {
+      margin: 52px 0 8px 0;
+    }
+  }

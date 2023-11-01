@@ -1,8 +1,9 @@
 @use './modules/responsiveLayout';
-@use './modules/responsiveHeader';
+@use './modules/responsiveHeaders';
 @use './modules/responsiveForm';
 @use './modules/responsiveAvatar';
 @use './modules/responsiveButtons';
+@use './modules/responsiveProjectDescription';
 
 $header-font-family: 'Montserrat', sans-serif;
 $user-input-text-font-family: 'PT Sans', sans-serif;
@@ -10,6 +11,8 @@ $text-font-family-1: 'PT Mono', monospace;
 $text-font-family-2: 'PT Sans', sans-serif;
 $text-font-color_light: #ffffff;
 $text-font-color_dark: #000000;
+$text-font-color_dark_alpha: #000000b2;
+$text-font-color_light_alpha: #FFFFFFb2;
 
 $profile-background-color: #eff1f2;
 $expectations-background-color: #ffffff;
@@ -40,11 +43,9 @@ $input-border-color: #1f406f33;
 $input-border-color_focus: #0059d9;
 
 @mixin layout {
-    @include responsiveLayout.respond-to('large') {
+    @include responsiveLayout.respond-to() {
         width: auto;
     }
-    @include responsiveLayout.respond-to('medium');
-    @include responsiveLayout.respond-to('small');
 
     display: flex;
     justify-content: center;
@@ -61,7 +62,7 @@ $input-border-color_focus: #0059d9;
 }
 
 @mixin header-text {
-    @include responsiveHeader.respond();
+    @include responsiveHeaders.main-header-respond();
     font: {
         family: $header-font-family;
     }
@@ -91,7 +92,7 @@ $input-border-color_focus: #0059d9;
     }
     line-height: 20px;
     overflow-wrap: break-word;
-    opacity: 0.7;
+    @content;
 }
 
 @mixin paragraph-text-2 {
@@ -116,51 +117,6 @@ $input-border-color_focus: #0059d9;
     height: 48px;
     width: 48px;
     border-radius: 50%;
-}
-
-@keyframes rise {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-    1% {
-        display: block;
-        transform: translateY(-25px);
-        opacity: 0;
-    }
-    100% {
-        display: block;
-        transform: translateY(0px);
-        opacity: .7;
-    }
-}
-
-@keyframes rise-1 {
-    0% {
-        display: block;
-        transform: translateY(0px);
-        opacity: .7;
-    }
-    99% {
-        display: block;
-        transform: translateY(-25px);
-        opacity: 0;
-    }
-    100% {
-        display: none;
-        opacity: 0;
-    }
-}
-
-@keyframes slide {
-    from {
-        opacity: 0;
-        height: 0px;
-    }
-    to {
-        height: auto;
-        opacity: 1;
-    }
 }
 
 * {
@@ -261,6 +217,7 @@ button {
     background-color: $expectations-background-color;
 
     label {
+        background-color: inherit;
         display: flex;
         flex-direction: row;
         cursor: pointer;
@@ -287,8 +244,7 @@ button {
 
         &:checked {
             ~ p {
-                // position: absolute;s
-                animation: rise .3s;
+                max-height: 700px;
             }
             ~ label {
                 &::after {
@@ -296,11 +252,11 @@ button {
                 }
             }
         }
-
+        
         &:not(:checked) {
             ~ p {
-                display: none;
-                animation: rise-1 .3s;
+                max-height: 0;
+                margin-bottom: 0;
             }
             ~ label {
                 color: $accordion-text-color;
@@ -320,11 +276,16 @@ button {
     }
 
     p {
-        @include paragraph-text-1;
+        @include paragraph-text-1 {
+            color: $text-font-color_dark_alpha;
+        }
+
         margin: {
             top: -2px;
             bottom: 20px;
         }
+        overflow: hidden;
+        transition: all 0.4s;
     }
 
     > div {
@@ -356,11 +317,11 @@ button {
     @for $i from 1 through $count {
         ##{$id-name}_#{$i} {
             &:checked {
-                ~ div div {
+                ~ ##{$id-name}-image-container div {
                     transform: translateX(calc(100 * ($i - 1) * -1%));
                     transition: all 1s;
                 }
-                ~ div label[for='#{$id-name}_#{$i}'] {
+                ~ .description-container label[for='#{$id-name}_#{$i}'] {
                     &::after {
                         background-color: transparent;
                         border: solid $bullet-color 1px;
@@ -385,6 +346,28 @@ button {
     @include slider('kaizen', 2);
     @include slider('technoline', 3);
 
+    .description-container {
+        @include responsiveProjectDescription.description-respond();
+
+        p {
+            max-width: 520px;
+            color: $text-font-color_light;
+        }
+
+        > div {
+            display: flex;
+            gap: 8px;
+            height: fit-content;
+        }
+    }
+
+    .project-header {
+        @include responsiveProjectDescription.link-respond();
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     input {
         display: none;
     }
@@ -398,6 +381,7 @@ button {
             height: 8px;
             width: 8px;
             border-radius: 50%;
+            box-sizing: border-box;
         }
 
         &:hover {
@@ -428,29 +412,36 @@ button {
     }
 
     h2 {
+        @include responsiveHeaders.project-header-respond();
         color: $text-font-color_light;
     }
 
     h3 {
         @include large-text;
         color: $text-font-color_light;
+        margin: 0;
     }
 
     p {
         @include paragraph-text-1;
-        color: $text-font-color_light;
+        color: $text-font-color_light_alpha;
         text-align: center;
+        margin: 0;
     }
 
     ul {
+        @include responsiveProjectDescription.list-respond();
         padding: 0px;
     }
 
     li {
+        @include responsiveProjectDescription.list-item-respond();
+
         div p {
             @include paragraph-text-2;
             text-align: left;
             opacity: 1;
+            margin: 0;
         }
 
         &::marker {
